@@ -12,3 +12,20 @@ session_start();
 
 echo 'In the beginning the Universe was created.
 This has made a lot of people very angry and been widely regarded as a bad move.';
+
+$hostname="localhost";
+$username="root";
+$password="hpfreak01";
+$dbname="game_board";
+
+$mysqli = new mysqli($hostname, $username, $password, $dbname);
+checkConnect($mysqli);
+echo 'The database is connected';
+function checkConnect($mysqli)
+{
+	if($mysqli->connect_errno) 
+	{
+		die('You done fucked up, and here is why ' . $mysqli->connect_error);
+		exit();
+	}
+}
