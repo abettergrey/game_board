@@ -1,5 +1,5 @@
 <?php
 
-echo "Hi Mom!"
+echo "Hi Mom!";
 //GAME BOARD
 //
