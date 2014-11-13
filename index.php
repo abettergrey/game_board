@@ -9,3 +9,6 @@ session_start();
 //	match and the other team will have to accept. If the other team
 //	does not accept than the event will be flaged for review by
 // an admin.
+
+echo 'In the beginning the Universe was created.
+This has made a lot of people very angry and been widely regarded as a bad move.”';
