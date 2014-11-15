@@ -59,6 +59,7 @@ function createTables($mysqli)
 	}
 	if(!$id)
 	{
+		echo 'hiting 1';
 		$sql = "CREATE TABLE events 
 				(id INT NOT NULL AUTO_INCREMENT, PRIMARY KEY( id ),
 				team_one_id INT,
@@ -76,6 +77,7 @@ function createTables($mysqli)
 		if($stmt = $mysqli->prepare($sql))
         {
             $stmt->execute();
+            echo 'works 1';
         }
 	}
 	//*****************************************************************
@@ -89,6 +91,7 @@ function createTables($mysqli)
 	}
 	if(!$id_u)
 	{
+		echo 'hiting 2';
 		$sql = "CREATE TABLE users
 				(id INT NOT NULL AUTO_INCREMENT, PRIMARY KEY( id ),
 				user_name VARCHAR(30),
@@ -98,6 +101,7 @@ function createTables($mysqli)
 		if($stmt = $mysqli->prepare($sql))
         {
             $stmt->execute();
+            echo 'works 2';
         }
 	}
 	//*******************************************************************
