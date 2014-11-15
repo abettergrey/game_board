@@ -59,7 +59,6 @@ function createTables($mysqli)
 	}
 	if(!$id)
 	{
-		echo 'hiting 1';
 		$sql = "CREATE TABLE events 
 				(id INT NOT NULL AUTO_INCREMENT, PRIMARY KEY( id ),
 				team_one_id INT,
@@ -77,54 +76,51 @@ function createTables($mysqli)
 		if($stmt = $mysqli->prepare($sql))
         {
             $stmt->execute();
-            echo 'works 1';
         }
 	}
 	//*****************************************************************
 
-	//creating user table
-	if($result = $mysqli->query("SELECT id FROM users LIMIT 1"))
-	{
-		$row = $result->fetch_object();
-		$id_u = $row->id;
-		$result->close();
-	}
-	if(!$id_u)
-	{
-		echo 'hiting 2';
-		$sql = "CREATE TABLE users
-				(id INT NOT NULL AUTO_INCREMENT, PRIMARY KEY( id ),
-				user_name VARCHAR(30),
-				user_email VARCHAR(30),
-				user_team INT,
-				FOREIGN KEY (user_team) REFERENCES teams (id))";
-		if($stmt = $mysqli->prepare($sql))
-        {
-            $stmt->execute();
-            echo 'works 2';
-        }
-	}
-	//*******************************************************************
+	// //creating user table
+	// if($result = $mysqli->query("SELECT id FROM users LIMIT 1"))
+	// {
+	// 	$row = $result->fetch_object();
+	// 	$id_u = $row->id;
+	// 	$result->close();
+	// }
+	// if(!$id_u)
+	// {
+	// 	$sql = "CREATE TABLE users
+	// 			(id INT NOT NULL AUTO_INCREMENT, PRIMARY KEY( id ),
+	// 			user_name VARCHAR(30),
+	// 			user_email VARCHAR(30),
+	// 			user_team INT,
+	// 			FOREIGN KEY (user_team) REFERENCES teams (id))";
+	// 	if($stmt = $mysqli->prepare($sql))
+ //        {
+ //            $stmt->execute();
+ //        }
+	// }
+	// //*******************************************************************
 
-	//creating team table
-	if($result = $mysqli->query("SELECT id FROM team LIMIT 1"))
-	{
-		$row = $result->fetch_object();
-		$id_t = $row->id;
-		$result->close();
-	}
-	if(!$id_t)
-	{
-		$sql = "CREATE TABLE team
-				(id INT NOT NULL AUTO_INCREMENT, PRIMARY KEY( id ),
-				team_name VARCHAR(30),
-				team_wins INT,
-				team_loses INT)";
-		if($stmt = $mysqli->prepare($sql))
-        {
-            $stmt->execute();
-        }
-	}
+	// //creating team table
+	// if($result = $mysqli->query("SELECT id FROM team LIMIT 1"))
+	// {
+	// 	$row = $result->fetch_object();
+	// 	$id_t = $row->id;
+	// 	$result->close();
+	// }
+	// if(!$id_t)
+	// {
+	// 	$sql = "CREATE TABLE team
+	// 			(id INT NOT NULL AUTO_INCREMENT, PRIMARY KEY( id ),
+	// 			team_name VARCHAR(30),
+	// 			team_wins INT,
+	// 			team_loses INT)";
+	// 	if($stmt = $mysqli->prepare($sql))
+ //        {
+ //            $stmt->execute();
+ //        }
+	// }
 }
 
 function displayHTMLHead()
