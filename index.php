@@ -64,7 +64,7 @@ function createTables($mysqli)
 				team_one_id INT,
 				team_two_id INT,
 				team_one_score INT,
-				team_two_socre INT, 
+				team_two_score INT, 
 				game_name VARCHAR(30),
 				game_type VARCHAR(30),
 				winning_team INT,
