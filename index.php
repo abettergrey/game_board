@@ -164,7 +164,7 @@ function showList($mysqli, $msg)
 	// else display "no records" message
 	if( $countvalue > 0 )
 	{
-			populateTable($mysqli); // populate html table, from mysql table
+			//populateTable($mysqli); // populate html table, from mysql table
 	}
 	else
 	{
