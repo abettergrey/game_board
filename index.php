@@ -70,9 +70,9 @@ function createTables($mysqli)
 				winning_team INT,
 				closed BOOLEAN,
 				flag BOOLEAN,
-				FOREIGN KEY (team_one_id) REFERENCES teams (id),
-				FOREIGN KEY (team_two_id) REFERENCES teams (id),
-				FOREIGN KEY (winning_team) REFERENCES teams (id))";
+				FOREIGN KEY (team_one_id) REFERENCES team (id),
+				FOREIGN KEY (team_two_id) REFERENCES team (id),
+				FOREIGN KEY (winning_team) REFERENCES team (id))";
 		if($stmt = $mysqli->prepare($sql))
         {
             $stmt->execute();
@@ -94,7 +94,7 @@ function createTables($mysqli)
 				user_name VARCHAR(30),
 				user_email VARCHAR(30),
 				user_team INT,
-				FOREIGN KEY (user_team) REFERENCES teams (id))";
+				FOREIGN KEY (user_team) REFERENCES team (id))";
 		if($stmt = $mysqli->prepare($sql))
         {
             $stmt->execute();
