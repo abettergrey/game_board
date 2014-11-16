@@ -184,6 +184,7 @@ function populateTable($mysqli)
 	{
 		while($row = $result->fetch_row())
 		{
+			echo "herp durp";
 			$output = '<tr><td>' . $row[0] > '</td><td>' . $row[1] . '</td><td>'
 				. $row[3] . '</td><td>' . $row[2] . '</td><td>' . $row[4]
 				. '</td><td>' . $row[5] . '</td><td>' . $row[6]  
