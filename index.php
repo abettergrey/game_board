@@ -10,17 +10,15 @@ session_start();
 //	does not accept than the event will be flaged for review by
 // an admin.
 
-echo 'In the beginning the Universe was created.
-This has made a lot of people very angry and been widely regarded as a bad move.';
 
 $hostname="localhost";
 $username="root";
 $password="hpfreak01";
 $dbname="game_board";
-
+$user_name = $_SESSION['user'];
+$user_id = $_SESSION['id'];
 $mysqli = new mysqli($hostname, $username, $password, $dbname);
 checkConnect($mysqli);
-echo 'The database is connected';
 
 //This will only fire if the database is connected
 if($mysqli)
