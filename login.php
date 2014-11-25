@@ -29,8 +29,7 @@ function show_login()
 	</script></head><body>';
 	
 	echo '	<br>
-			<div class="row">
-			<div class="col-md-4 span6 offset3">
+			<div class="col-md-4 center">
 			<form name="basic" method="POST" action="login.php">
 				<table class="table table-condensed" 
 					style="border: 1px solid #dddddd; 
@@ -48,3 +47,10 @@ function show_login()
 					</table>';
 	
 }
+
+<style> 
+.center
+{
+	margin: 0 auto;
+}
+</style>
