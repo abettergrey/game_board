@@ -7,11 +7,11 @@ $user_password = $_POST["user_password"];
 
 if(!$user_id || !$user_email || !$user_password)
 {
-	show_login()
+	show_login();
 }
 else
 {
-	go_for_loginOP
+	//go_for_loginOP
 }
 
 function show_login()
