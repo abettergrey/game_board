@@ -29,6 +29,7 @@ function show_login()
 	</script></head><body>';
 	
 	echo '	<br>
+			<div class="row">
 			<div class="col-md-4 span6 offset3">
 			<form name="basic" method="POST" action="login.php">
 				<table class="table table-condensed" 
