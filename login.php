@@ -19,7 +19,7 @@ function show_login()
 	echo '<!DOCTYPE html>
     <html> 
 	<head>
-	<title>table22.php</title>
+	<title>Login</title>
 	<link rel="stylesheet" 	href="https://maxcdn.bootstrapcdn.com/bootstrap/
 	3.2.0/css/bootstrap.min.css">
 	<link rel="stylesheet" 	href="https://maxcdn.bootstrapcdn.com/bootstrap/
@@ -29,7 +29,7 @@ function show_login()
 	</script></head><body>';
 	
 	echo '	<br>
-			<div class="col-md-4 vertical-center">
+			<div class="col-md-4 span6 offset3">
 			<form name="basic" method="POST" action="login.php">
 				<table class="table table-condensed" 
 					style="border: 1px solid #dddddd; 
