@@ -47,10 +47,11 @@ function show_login()
 					</table>';
 	
 }
-
-<style> 
+<html>
+<style type=”text/css”> 
 .center
 {
 	margin: 0 auto;
 }
 </style>
+</html>
