@@ -103,7 +103,7 @@ function show_login()
 								<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Sign Up</a>
             				</h4>
             			</div>
-            			<div id="collapseTwo" class="panel-collapse collapse in">
+            			<div id="collapseTwo" class="panel-collapse collapse">
             				<div class="panel-body">
             					<p>hey, this works</p>
             				</div>
