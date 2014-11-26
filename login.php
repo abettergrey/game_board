@@ -81,7 +81,7 @@ function show_login()
 									<tr><td>Password: </td><td><input type="password"
 									name="user_password" value="" size="20"</td></tr>
 									<tr><td><input type="submit" name="sign_up_try"
-									class="btn btn-success" value="Sign up"></td>
+									class="btn btn-primary" value="Sign up"></td>
 									</table>
             				</div>
             			</div>
