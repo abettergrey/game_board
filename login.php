@@ -76,7 +76,7 @@ function show_login()
             			 <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Login</a>
             			</h4>
         			</div>
-        			<div id="collapseOne" class="panel-collapse">
+        			<div id="collapseOne" class="panel-collapse in">
             			<div class="panel-body">
 							<div class="col-md-4>
 								<form name="basic" method="POST" action="login.php">
