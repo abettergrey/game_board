@@ -57,8 +57,6 @@ function show_login()
 									</table>
 							</div>
 						</div>
-					</div>
-				</div>
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h4 class="panel-title">
@@ -70,6 +68,7 @@ function show_login()
             					<p>hey, this works</p>
             				</div>
             			</div>
-            		</div>';
+            		</div>
+            	</div>';
 	
 }
