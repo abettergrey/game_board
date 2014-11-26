@@ -29,13 +29,11 @@ function show_login()
 	</script></head><body>';
 	
 	echo '	<br>
-	<h1 style="border: 1px solid #dddddd; border-radius: 5px; box-shadow: 2px 2px 10px; margin: 0 auto; width:250px;">
-		Please login to continue</h1>
 			<div class="col-md-4>
 			<form name="basic" method="POST" action="login.php">
 				<table class="table table-condensed" 
 					style="border: 1px solid #dddddd; 
-					border-radius: 5px; box-shadow: 2px 2px 10px; margin: 0 auto; width:250px;">
+					border-radius: 5px; box-shadow: 2px 2px 10px; margin: 0 auto; width:250px; margin: 200px;">
 					<tr><td colspan="2" style="text-align: center; 
 					border-radius: 5px; color: white; 
 					background-color:#333333;">
