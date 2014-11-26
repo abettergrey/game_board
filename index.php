@@ -15,9 +15,14 @@ $hostname="localhost";
 $username="root";
 $password="hpfreak01";
 $dbname="game_board";
-$user_name = $_SESSION['user'];
+$user_email = $_SESSION['user_email'];
 $user_id = $_SESSION['id'];
 $mysqli = new mysqli($hostname, $username, $password, $dbname);
+
+if(!$user_id)
+{
+	header( 'Location: http://107.178.221.68/login.php' );
+}
 checkConnect($mysqli);
 
 //This will only fire if the database is connected
