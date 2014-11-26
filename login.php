@@ -66,7 +66,7 @@ function show_login()
             </div>
         </div>
     </div>
-</div>'
+</div>';
 	
 	// echo '	<br>
 	// 		<div id="accordion" class="panel-group">
