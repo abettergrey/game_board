@@ -33,7 +33,7 @@ function show_login()
 			<form name="basic" method="POST" action="login.php">
 				<table class="table table-condensed" 
 					style="border: 1px solid #dddddd; 
-					border-radius: 5px; box-shadow: 2px 2px 10px; margin: 0 auto; width:450px; margin: 200px;">
+					border-radius: 5px; box-shadow: 2px 2px 10px; margin: 0 auto; width:250px; margin-top: 200px;">
 					<tr><td colspan="2" style="text-align: center; 
 					border-radius: 5px; color: white; 
 					background-color:#333333;">
