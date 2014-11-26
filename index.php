@@ -21,7 +21,7 @@ $mysqli = new mysqli($hostname, $username, $password, $dbname);
 
 if(!$user_id)
 {
-	header( 'Location: http://107.178.221.68/login.php' );
+	header( 'Location: http://107.178.221.68/game_board/login.php' );
 }
 checkConnect($mysqli);
 
