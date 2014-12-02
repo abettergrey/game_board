@@ -106,6 +106,7 @@ function show_login()
 									<tr><td><input type="submit" name="login_try"
 									class="btn btn-success" value="Login"></td>
 									</table>
+								</form>
 							</div>
 						</div>
 					</div>
@@ -135,6 +136,7 @@ function show_login()
 									<tr><td><input type="submit" name="sign_up_try"
 									class="btn btn-primary" value="Sign up"></td>
 									</table>
+									</form>
             				</div>
             			</div>
             		</div>
