@@ -12,6 +12,8 @@ $hostname="localhost";
 $username="root";
 $password="hpfreak01";
 $dbname="game_board";
+
+echo $user_email, $user_password;
 if(!$user_email || !$user_password)
 {
 	show_login();
@@ -20,11 +22,13 @@ else
 {
 	if( isset( $_POST['login_try'] ) )
 	{
+		echo'test1';
 		try_login();
 	}
 	else if( isset( $_POST['sign_up_try'] ))
 	{
 		sign_up();
+		echo 'test2';
 	}
 }
 
@@ -63,7 +67,6 @@ function sign_up()
         $stmt->bind_param('sss', $user_name, $user_email, $user_password);
         $stmt->execute();
         $stmt->close();
-		echo 'fdsa';
     }
 	header( 'Location: http://107.178.221.68/game_board/index.php' );
 }
