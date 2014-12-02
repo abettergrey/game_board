@@ -63,7 +63,7 @@ function sign_up()
         $stmt->bind_param('sss', $user_name, $user_email, $user_password);
         $stmt->execute();
         $stmt->close();
-		echo 'fdsa"
+		echo 'fdsa';
     }
 	header( 'Location: http://107.178.221.68/game_board/index.php' );
 }
