@@ -13,7 +13,7 @@ $username="root";
 $password="hpfreak01";
 $dbname="game_board";
 
-
+echo $user_email, $user_password;
 if(!$user_email || !$user_password)
 {
 	show_login();
@@ -80,8 +80,8 @@ function show_login()
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"</script>
-	</script></head><body>';
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	</head><body>';
 
 	
 	echo '	<br>
