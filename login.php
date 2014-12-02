@@ -4,15 +4,67 @@ session_start();
 
 $user_email = $_POST["user_email"];
 $user_password = $_POST["user_password"];
-$user_id = $_POST["user_id"];
+$user_name = $_POST["user_name"];
 
-if(!$user_id || !$user_email || !$user_password)
+$mysqli = new mysqli($hostname, $username, $password, $dbname);
+
+$hostname="localhost";
+$username="root";
+$password="hpfreak01";
+$dbname="game_board";
+if(!$user_email || !$user_password)
 {
 	show_login();
 }
 else
 {
-	//go_for_loginOP
+	if( isset( $_POST['login_try'] ) )
+	{
+		try_login();
+	}
+	else if( isset( $_POST['sign_up_try'] ))
+	{
+		sign_up();
+	}
+}
+
+function try_login()
+{
+	global $hostname, $username, $password, $dbname, $user_name, $user_password, $mysqli;
+	$found = false;
+	if($result = $mysqli->query("SELECT * FROM $usertable"))
+	{
+		while($row = $result->fetch_row())
+		{
+			if($user_email === $row[2] && $user_password === $row[4])
+			{
+				$_SESSION['user_email'] = $row[1];
+				$_SESSION['id'] = $row[0];
+				header( 'Location: http://107.178.221.68/game_board/index.php' );
+				$found = true;
+			}
+		}
+	}
+	if(!$found)
+	{
+		echo 'Login failed!';
+	}
+}
+
+function sign_up()
+{
+	global $hostname, $username, $password, $dbname, $user_name, $user_password, $user_name, $mysqli;
+	
+	$stmt = $mysqli->stmt_init();
+    if($stmt = $mysqli->prepare("INSERT INTO users (user_name, user_email, user_password) VALUES (?, ?, ?)"))
+    {
+        // Bind parameters. Types: s=string, i=integer, d=double, etc.
+		// protects against sql injections
+        $stmt->bind_param('sss', $user_name, $user_email, $user_password);
+        $stmt->execute();
+        $stmt->close();
+    }
+	header( 'Location: http://107.178.221.68/game_board/index.php' );
 }
 
 function show_login()
