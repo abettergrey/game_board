@@ -14,6 +14,7 @@ $password="hpfreak01";
 $dbname="game_board";
 
 echo $user_email, $user_password;
+echo 'hey';
 if(!$user_email || !$user_password)
 {
 	show_login();
