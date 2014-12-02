@@ -40,7 +40,8 @@ function try_login()
 	{
 		while($row = $result->fetch_row())
 		{	
-			echo $row[0],$row[1],$row[2],$row[3], $row[4];
+			echo $row[2], $row[4];
+			echo $user_email, $user_password;
 			if($user_email === $row[2] && $user_password === $row[4])
 			{
 				$_SESSION['user_email'] = $row[1];
