@@ -90,7 +90,7 @@ function show_login()
         			</div>
         			<div id="collapseOne" class="panel-collapse in">
             			<div class="panel-body">
-							<div class="col-md-4>
+							<div class="col-md-4">
 								<form name="basic" method="POST" action="login.php">
 								<table class="table table-condensed" 
 									style="border: 1px solid #dddddd; 
@@ -118,7 +118,7 @@ function show_login()
             			</div>
             			<div id="collapseTwo" class="panel-collapse collapse">
             				<div class="panel-body">
-            					<div class="col-md-4>
+            					<div class="col-md-4">
 								<form name="basic" method="POST" action="login.php">
 								<table class="table table-condensed" 
 									style="border: 1px solid #dddddd; 
