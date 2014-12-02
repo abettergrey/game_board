@@ -13,7 +13,6 @@ $username="root";
 $password="hpfreak01";
 $dbname="game_board";
 
-echo $user_email, $user_password;
 if(!$user_email || !$user_password)
 {
 	show_login();
@@ -22,7 +21,6 @@ else
 {
 	if( isset( $_POST['login_try'] ) )
 	{
-		echo'test1';
 		try_login();
 	}
 	else if( isset( $_POST['sign_up_try'] ))
@@ -36,7 +34,7 @@ function try_login()
 {
 	global $hostname, $username, $password, $dbname, $user_name, $user_password, $mysqli;
 	$found = false;
-	if($result = $mysqli->query("SELECT * FROM $usertable"))
+	if($result = $mysqli->query("SELECT * FROM users"))
 	{
 		while($row = $result->fetch_row())
 		{
@@ -132,11 +130,11 @@ function show_login()
 									background-color:#333333;">
 									<h2>Sign up Form</h2></td></tr>
 									<tr><td>Email: </td><td><input type="edit"
-									name="user_email" value="" size="20"</td></tr>
+									name="user_email" value="" size="20"></td></tr>
 									<tr><td>Name: </td><td><input type="edit"
-									name="user_name" value="" size="20"</td></tr>
+									name="user_name" value="" size="20"></td></tr>
 									<tr><td>Password: </td><td><input type="password"
-									name="user_password" value="" size="20"</td></tr>
+									name="user_password" value="" size="20"></td></tr>
 									<tr><td><input type="submit" name="sign_up_try"
 									class="btn btn-primary" value="Sign up"></td></tr>
 									</table>
