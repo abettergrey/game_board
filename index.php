@@ -31,15 +31,42 @@ if($mysqli)
 	createTables($mysqli);
 	$userSelection 		= 0;
 	$firstCall 			= 1; // first time program is called
+	$insertTeam			= 2;
 
 	$userSelection = $firstCall; // assumes first call unless button was clicked
+	
+	if( isset( $_POST['insert_team'] ) ) $userSelection = $insertTeam;
 	switch($userSelection):
 		case $firstCall:
 			displayHTMLHead();
 		    showList($mysqli, $msg);
 		    break;
+		case $inserTeam:
+			displayHTMLHead();
+			display_team_insert();
+			break;
 	endswitch;
 
+}
+
+function display_team_insert()
+{
+	echo '<div class="col-md-4">
+	<form name="basic" method="POST" action="index.php" 
+	    onSubmit="return validate();">
+		<table class="table table-condensed" style="border: 1px solid #dddddd; 
+		    border-radius: 5px; box-shadow: 2px 2px 10px;">
+			<tr><td colspan="2" style="text-align: center; border-radius: 5px; 
+			    color: white; background-color:#333333;">
+			<h2>Team Maker</h2></td></tr>
+			<tr><td>Team Name: </td><td><input type="edit" name="boat_type" value="" 
+			size="20"></td></tr>
+			<tr><td><input type="submit" name="insert_team" 
+			class="btn btn-success" value="Add Team"></td>
+			<td style="text-align: right;"><input type="reset" 
+			class="btn btn-danger" value="Reset Form"></td></tr>
+		</table><a href="table22.php" class="btn btn-primary">
+		Display Database</a></form></div>';
 }
 
 function checkConnect($mysqli)
@@ -177,6 +204,8 @@ function showList($mysqli, $msg)
 	echo    '</table>
 			<input type="hidden" id="hid" name="hid" value="">
 			<input type="hidden" id="uid" name="uid" value="">
+			<input type="submit" name="insert_team" value="Make a team" 
+			class="btn btn-primary"">
 			</form></div>';
 	footer();
 }
