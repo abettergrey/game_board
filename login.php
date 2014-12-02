@@ -6,12 +6,14 @@ $user_email = $_POST["user_email"];
 $user_password = $_POST["user_password"];
 $user_name = $_POST["user_name"];
 
-$mysqli = new mysqli($hostname, $username, $password, $dbname);
-
 $hostname="localhost";
 $username="root";
 $password="hpfreak01";
 $dbname="game_board";
+
+$mysqli = new mysqli($hostname, $username, $password, $dbname);
+
+
 
 if(!$user_email || !$user_password)
 {
