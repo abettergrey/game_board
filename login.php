@@ -37,7 +37,8 @@ function try_login()
 	if($result = $mysqli->query("SELECT * FROM users"))
 	{
 		while($row = $result->fetch_row())
-		{
+		{	
+			echo $row[0],$row[1],$row[2],$row[3], $row[4];
 			if($user_email === $row[2] && $user_password === $row[4])
 			{
 				$_SESSION['user_email'] = $row[1];
