@@ -34,7 +34,7 @@ else
 
 function try_login()
 {
-	global $hostname, $username, $password, $dbname, $user_name, $user_password, $mysqli;
+	global $hostname, $username, $password, $dbname, $user_email, $user_password, $mysqli;
 	$found = false;
 	if($result = $mysqli->query("SELECT * FROM users"))
 	{
