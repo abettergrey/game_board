@@ -13,8 +13,7 @@ $username="root";
 $password="hpfreak01";
 $dbname="game_board";
 
-echo $user_email, $user_password;
-echo 'hey';
+
 if(!$user_email || !$user_password)
 {
 	show_login();
@@ -109,7 +108,7 @@ function show_login()
 									<tr><td>Password: </td><td><input type="password"
 									name="user_password" value="" size="20"</td></tr>
 									<tr><td><input type="submit" name="login_try"
-									class="btn btn-success" value="Login"></td>
+									class="btn btn-success" value="Login"></td></tr>
 									</table>
 								</form>
 							</div>
@@ -139,7 +138,7 @@ function show_login()
 									<tr><td>Password: </td><td><input type="password"
 									name="user_password" value="" size="20"</td></tr>
 									<tr><td><input type="submit" name="sign_up_try"
-									class="btn btn-primary" value="Sign up"></td>
+									class="btn btn-primary" value="Sign up"></td></tr>
 									</table>
 									</form>
             				</div>
