@@ -66,10 +66,9 @@ function create_team($mysqli)
     {	
         // Bind parameters. Types: s=string, i=integer, d=double, etc.
 		// protects against sql injections
-        $stmt->bind_param('sii', $team_name, 0, 0);
+        $stmt->bind_param('sii', $team_name, '0', '0');
         $stmt->execute();
         $stmt->close();
-		echo $team_name;
     }
 }
 
