@@ -1,0 +1,46 @@
+Foreign Keys:
++---------------------+------------+
+| foreign key         | references |
++---------------------+------------+
+| events.team_one_id  | team.id    |
+| events.team_two_id  | team.id    |
+| events.winning_team | team.id    |
+| users.user_team     | team.id    |
++---------------------+------------+
+
+Events
++----------------+-------------+------+-----+---------+----------------+
+| Field          | Type        | Null | Key | Default | Extra          |
++----------------+-------------+------+-----+---------+----------------+
+| id             | int(11)     | NO   | PRI | NULL    | auto_increment |
+| team_one_id    | int(11)     | YES  | MUL | NULL    |                |
+| team_two_id    | int(11)     | YES  | MUL | NULL    |                |
+| team_one_score | int(11)     | YES  |     | NULL    |                |
+| team_two_score | int(11)     | YES  |     | NULL    |                |
+| game_name      | varchar(30) | YES  |     | NULL    |                |
+| game_type      | varchar(30) | YES  |     | NULL    |                |
+| winning_team   | int(11)     | YES  | MUL | NULL    |                |
+| closed         | tinyint(1)  | YES  |     | NULL    |                |
+| flag           | tinyint(1)  | YES  |     | NULL    |                |
++----------------+-------------+------+-----+---------+----------------+
+
+Teams
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| id         | int(11)     | NO   | PRI | NULL    | auto_increment |
+| team_name  | varchar(30) | YES  |     | NULL    |                |
+| team_wins  | int(11)     | YES  |     | NULL    |                |
+| team_loses | int(11)     | YES  |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+
+Users
++---------------+-------------+------+-----+---------+----------------+
+| Field         | Type        | Null | Key | Default | Extra          |
++---------------+-------------+------+-----+---------+----------------+
+| id            | int(11)     | NO   | PRI | NULL    | auto_increment |
+| user_name     | varchar(30) | YES  |     | NULL    |                |
+| user_email    | varchar(30) | YES  |     | NULL    |                |
+| user_team     | int(11)     | YES  | MUL | NULL    |                |
+| user_password | varchar(30) | YES  |     | NULL    |                |
++---------------+-------------+------+-----+---------+----------------+
