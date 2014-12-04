@@ -70,6 +70,9 @@ function create_team($mysqli)
         $stmt->execute();
         $stmt->close();
     }
+	else{
+		echo 'what did you do....';
+	}
 }
 
 function display_team_insert()
