@@ -41,7 +41,7 @@ if($mysqli)
 			displayHTMLHead();
 		    showList($mysqli, $msg);
 		    break;
-		case $inserTeam:
+		case $insertTeam:
 			displayHTMLHead();
 			display_team_insert();
 			break;
