@@ -32,21 +32,44 @@ if($mysqli)
 	$userSelection 		= 0;
 	$firstCall 			= 1; // first time program is called
 	$insertTeam			= 2;
+	$insertTeam_done	= 3;
 
 	$userSelection = $firstCall; // assumes first call unless button was clicked
 	
 	if( isset( $_POST['insert_team'] ) ) $userSelection = $insertTeam;
+	if( isset( $_POST['insertTeam_done'] ) ) $userSelection = $insertTeam_done;
+	
+	$team_name = $_POST['team_name'];
 	switch($userSelection):
 		case $firstCall:
 			displayHTMLHead();
 		    showList($mysqli, $msg);
 		    break;
-		case $insertTeam:
+		case $insertTeam: 
 			displayHTMLHead();
 			display_team_insert();
 			break;
+		case $insertTeam_done:
+			displayHTMLHead();
+			create_team($mysqli);
+			break;
 	endswitch;
 
+}
+
+function create_team($mysqli)
+{
+	global $team_name;
+	global $usertable;
+    $stmt = $mysqli->stmt_init();
+    if($stmt = $mysqli->prepare("INSERT INTO team (team_name, team_wins, team_loses) VALUES (?, ?, ?)"))
+    {
+        // Bind parameters. Types: s=string, i=integer, d=double, etc.
+		// protects against sql injections
+        $stmt->bind_param('sii', $team_name, 0, 0);
+        $stmt->execute();
+        $stmt->close();
+    }
 }
 
 function display_team_insert()
@@ -59,9 +82,9 @@ function display_team_insert()
 			<tr><td colspan="2" style="text-align: center; border-radius: 5px; 
 			    color: white; background-color:#333333;">
 			<h2>Team Maker</h2></td></tr>
-			<tr><td>Team Name: </td><td><input type="edit" name="boat_type" value="" 
+			<tr><td>Team Name: </td><td><input type="edit" name="team_name" value="" 
 			size="20"></td></tr>
-			<tr><td><input type="submit" name="insert_team" 
+			<tr><td><input type="submit" name="insertTeam_done" 
 			class="btn btn-success" value="Add Team"></td>
 			<td style="text-align: right;"><input type="reset" 
 			class="btn btn-danger" value="Reset Form"></td></tr>
