@@ -52,6 +52,7 @@ if($mysqli)
 		case $insertTeam_done:
 			displayHTMLHead();
 			create_team($mysqli);
+			header( 'Location: http://107.178.221.68/game_board/' )
 			break;
 	endswitch;
 
@@ -60,7 +61,6 @@ if($mysqli)
 function create_team($mysqli)
 {
 	global $team_name;
-	echo $team_name;
     $stmt = $mysqli->stmt_init();
     if($stmt = $mysqli->prepare("INSERT INTO team (team_name) VALUES (?)"))
     {	
