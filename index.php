@@ -33,11 +33,13 @@ if($mysqli)
 	$firstCall 			= 1; // first time program is called
 	$insertTeam			= 2;
 	$insertTeam_done	= 3;
+	$join_team			= 4;
 
 	$userSelection = $firstCall; // assumes first call unless button was clicked
 	
 	if( isset( $_POST['insert_team'] ) ) $userSelection = $insertTeam;
 	if( isset( $_POST['insertTeam_done'] ) ) $userSelection = $insertTeam_done;
+	if( isset( $_POST['join_team'])) $userSelection = $join_team
 	
 	$team_name = $_POST['team_name'];
 	switch($userSelection):
@@ -54,8 +56,55 @@ if($mysqli)
 			create_team($mysqli);
 			header( 'Location: http://107.178.221.68/game_board/' );
 			break;
+		case $join_team:
+			displayHTMLHead();
+			display_join_team();
+			break;
 	endswitch;
 
+}
+
+function display_join_team()
+{
+	'<div class="col-md-12">
+			<form action="index.php" method="POST">
+			<table class="table table-condensed" 
+			style="border: 1px solid #dddddd; border-radius: 5px; 
+			box-shadow: 2px 2px 10px;">
+			<tr><td colspan="10" style="text-align: center; border-radius: 5px; 
+			color: white; background-color:#333333;">
+			<h2 style="color: white;">Join a Team</h2>
+			</td></tr><tr style="font-weight:800; font-size:20px;">
+			<td>id</td><td>Team Name</td><td>Wins</td><td>Losses</td></tr>';
+
+	// get count of records in mysql table
+	$countresult = $mysqli->query("SELECT COUNT(*) FROM t");
+	$countfetch  = $countresult->fetch_row();
+	$countvalue  = $countfetch[0];
+	$countresult->close();
+
+	// if records > 0 in mysql table, then populate html table, 
+	// else display "no records" message
+	if( $countvalue > 0 )
+	{
+			if($result = $mysqli->query("SELECT * FROM events"))
+			{
+				while($row = $result->fetch_row())
+				{
+					$output = '<tr><td>' . $row[0] . '</td><td>' . $row[1] . '</td><td>'
+					. $row[2] . '</td><td>' . $row[3] . '</td>';
+					//. '<td><input style="margin-left: 10px;" type="submit"
+					//name="update" value="Update" onClick="setUid(' . $row[0] . ');" />';
+
+				echo $output;
+				}
+			}
+			$result->close();
+	}
+	else
+	{
+			echo '<br><p>No records in database table</p><br>';
+	}
 }
 
 function create_team($mysqli)
@@ -228,6 +277,8 @@ function showList($mysqli, $msg)
 			<input type="hidden" id="hid" name="hid" value="">
 			<input type="hidden" id="uid" name="uid" value="">
 			<input type="submit" name="insert_team" value="Make a team" 
+			class="btn btn-primary"">
+			<input type="submit" name="join_team" value="Join a Team" 
 			class="btn btn-primary"">
 			</form></div>';
 	footer();
