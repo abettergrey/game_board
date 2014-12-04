@@ -62,11 +62,11 @@ function create_team($mysqli)
 	global $team_name;
 	echo $team_name;
     $stmt = $mysqli->stmt_init();
-    if($stmt = $mysqli->prepare("INSERT INTO team (team_name, team_wins, team_loses) VALUES (?, ?, ?)"))
+    if($stmt = $mysqli->prepare("INSERT INTO team (team_name) VALUES (?)"))
     {	
         // Bind parameters. Types: s=string, i=integer, d=double, etc.
 		// protects against sql injections
-        $stmt->bind_param('sii', $team_name, '0', '0');
+        $stmt->bind_param('s', $team_name);
         $stmt->execute();
         $stmt->close();
     }
