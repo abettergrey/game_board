@@ -69,6 +69,7 @@ function create_team($mysqli)
         $stmt->bind_param('sii', $team_name, 0, 0);
         $stmt->execute();
         $stmt->close();
+		echo $team_name;
     }
 }
 
