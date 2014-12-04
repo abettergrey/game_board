@@ -63,16 +63,14 @@ function create_team($mysqli)
 	global $usertable;
     $stmt = $mysqli->stmt_init();
     if($stmt = $mysqli->prepare("INSERT INTO team (team_name, team_wins, team_loses) VALUES (?, ?, ?)"))
-    {
+    {	
+		echo 'works'
         // Bind parameters. Types: s=string, i=integer, d=double, etc.
 		// protects against sql injections
         $stmt->bind_param('sii', $team_name, 0, 0);
         $stmt->execute();
         $stmt->close();
     }
-	else{
-		echo 'what did you do....';
-	}
 }
 
 function display_team_insert()
