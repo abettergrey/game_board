@@ -131,7 +131,7 @@ function display_join_team($mysqli)
 	{
 			echo '<br><p>No records in database table</p><br>';
 	}
-	echo '<input type="hidden" id="uid" name="uid" value="">'
+	echo '<input type="hidden" id="uid" name="uid" value="">';
 	footer();
 }
 
