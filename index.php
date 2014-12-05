@@ -73,7 +73,7 @@ if($mysqli)
 function joint_team($mysqli)
 {	
 	$index = $_POST['uid'];
-	global $user_id
+	global $user_id;
     $stmt = $mysqli->stmt_init();
     if($stmt = $mysqli->prepare("INSERT INTO users (user_team) VALUES (?) WHERE id = $user_id"))
     {	
