@@ -88,11 +88,11 @@ function display_join_team()
 	if( $countvalue > 0 )
 	{
 			if($result = $mysqli->query("SELECT * FROM team"))
-			{
+			{	echo 'herp';
 				while($row = $result->fetch_row())
 				{
 					$output = '<tr><td>' . $row[0] . '</td><td>' . $row[1] . '</td><td>'
-					. $row[2] . '</td><td>' . $row[3] . '</td>';
+					. $row[2] . '</td><td>' . $row[3] . '</td></tr>';
 					//. '<td><input style="margin-left: 10px;" type="submit"
 					//name="update" value="Update" onClick="setUid(' . $row[0] . ');" />';
 
