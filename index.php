@@ -75,7 +75,7 @@ if($mysqli)
 function joint_team($mysqli)
 {	
 	$index = $_POST['uid'];
-	echo $index;
+	echo $index . "fdjksl;a";
 	global $user_id;
 	echo $user_id;
 	die;
