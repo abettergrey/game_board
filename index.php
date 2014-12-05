@@ -56,7 +56,7 @@ if($mysqli)
 		case $insertTeam_done:
 			//displayHTMLHead();
 			create_team($mysqli);
-			displayHTMLHead()
+			displayHTMLHead();
 			header( 'Location: http://107.178.221.68/game_board/' );
 			break;
 		case $join_team:
