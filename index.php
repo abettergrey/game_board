@@ -77,7 +77,7 @@ function joint_team($mysqli)
 	$index = $_POST['uid'];
 	global $user_id;
     $stmt = $mysqli->stmt_init();
-    if($stmt = $mysqli->prepare("INSERT INTO users (user_team) VALUES (?) WHERE id = $user_id"))
+    if($stmt = $mysqli->prepare("UPDATE users SET user_team=? where id = $user_id"))
     {	
         // Bind parameters. Types: s=string, i=integer, d=double, etc.
 		// protects against sql injections
