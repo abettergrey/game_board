@@ -34,12 +34,14 @@ if($mysqli)
 	$insertTeam			= 2;
 	$insertTeam_done	= 3;
 	$join_team			= 4;
+	$join_team_complete = 5;
 
 	$userSelection = $firstCall; // assumes first call unless button was clicked
 	
 	if( isset( $_POST['insert_team'] ) ) $userSelection = $insertTeam;
 	if( isset( $_POST['insertTeam_done'] ) ) $userSelection = $insertTeam_done;
 	if( isset( $_POST['join_team'])) $userSelection = $join_team;
+	if( isset( $_POST['join_team_complete'])) $userSelection = $join_team_complete;
 	
 	$team_name = $_POST['team_name'];
 	switch($userSelection):
@@ -52,7 +54,7 @@ if($mysqli)
 			display_team_insert();
 			break;
 		case $insertTeam_done:
-			displayHTMLHead();
+			//displayHTMLHead();
 			create_team($mysqli);
 			header( 'Location: http://107.178.221.68/game_board/' );
 			break;
@@ -60,8 +62,27 @@ if($mysqli)
 			displayHTMLHead();
 			display_join_team($mysqli);
 			break;
+		case $join_team_complete:
+			joint_team($mysqli);
+			header( 'Location: http://107.178.221.68/game_board/' );
+			break;
 	endswitch;
 
+}
+
+funciton joint_team($mysqli)
+{	
+	$index = $_POST['uid'];
+	global $user_id
+    $stmt = $mysqli->stmt_init();
+    if($stmt = $mysqli->prepare("INSERT INTO users (user_team) VALUES (?) WHERE id = $user_id"))
+    {	
+        // Bind parameters. Types: s=string, i=integer, d=double, etc.
+		// protects against sql injections
+        $stmt->bind_param('i', $index);
+        $stmt->execute();
+        $stmt->close();
+    }
 }
 
 function display_join_team($mysqli)
@@ -92,9 +113,9 @@ function display_join_team($mysqli)
 				while($row = $result->fetch_row())
 				{
 					$output = '<tr><td>' . $row[0] . '</td><td>' . $row[1] . '</td><td>'
-					. $row[2] . '</td><td>' . $row[3] . '</td></tr>';
-					//. '<td><input style="margin-left: 10px;" type="submit"
-					//name="update" value="Update" onClick="setUid(' . $row[0] . ');" />';
+					. $row[2] . '</td><td>' . $row[3] . '</td></tr><td><input name="join_team_complete" type="submit" 
+					class="btn btn-danger" value="Join" onclick="setUid(' . 
+					$row[0] .')" />';
 
 				echo $output;
 				}
