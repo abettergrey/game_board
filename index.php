@@ -58,13 +58,13 @@ if($mysqli)
 			break;
 		case $join_team:
 			displayHTMLHead();
-			display_join_team();
+			display_join_team($mysqli);
 			break;
 	endswitch;
 
 }
 
-function display_join_team()
+function display_join_team($mysqli)
 {
 	echo'<div class="col-md-12">
 			<form action="index.php" method="POST">
@@ -83,7 +83,6 @@ function display_join_team()
 	$countvalue  = $countfetch[0];
 	$countresult->close();
 
-	echo 'hey';
 	// if records > 0 in mysql table, then populate html table, 
 	// else display "no records" message
 	if( $countvalue > 0 )
