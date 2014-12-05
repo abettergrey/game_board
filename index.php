@@ -66,7 +66,7 @@ if($mysqli)
 
 function display_join_team()
 {
-	'<div class="col-md-12">
+	echo'<div class="col-md-12">
 			<form action="index.php" method="POST">
 			<table class="table table-condensed" 
 			style="border: 1px solid #dddddd; border-radius: 5px; 
