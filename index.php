@@ -39,7 +39,7 @@ if($mysqli)
 	
 	if( isset( $_POST['insert_team'] ) ) $userSelection = $insertTeam;
 	if( isset( $_POST['insertTeam_done'] ) ) $userSelection = $insertTeam_done;
-	if( isset( $_POST['join_team'])) $userSelection = $join_team
+	if( isset( $_POST['join_team'])) $userSelection = $join_team;
 	
 	$team_name = $_POST['team_name'];
 	switch($userSelection):
