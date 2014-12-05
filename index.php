@@ -78,7 +78,7 @@ function display_join_team()
 			<td>id</td><td>Team Name</td><td>Wins</td><td>Losses</td></tr>';
 
 	// get count of records in mysql table
-	$countresult = $mysqli->query("SELECT COUNT(*) FROM t");
+	$countresult = $mysqli->query("SELECT COUNT(*) FROM team");
 	$countfetch  = $countresult->fetch_row();
 	$countvalue  = $countfetch[0];
 	$countresult->close();
