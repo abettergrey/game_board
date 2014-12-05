@@ -75,7 +75,7 @@ if($mysqli)
 function joint_team($mysqli)
 {	
 	$index = $_POST['uid'];
-	echo $index . "fdjksl;a";
+	echo $index;
 	global $user_id;
 	echo $user_id;
 	die;
@@ -131,6 +131,7 @@ function display_join_team($mysqli)
 	{
 			echo '<br><p>No records in database table</p><br>';
 	}
+	echo '<input type="hidden" id="uid" name="uid" value="">'
 	footer();
 }
 
