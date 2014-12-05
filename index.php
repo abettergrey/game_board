@@ -113,7 +113,7 @@ function display_join_team($mysqli)
 				while($row = $result->fetch_row())
 				{
 					$output = '<tr><td>' . $row[0] . '</td><td>' . $row[1] . '</td><td>'
-					. $row[2] . '</td><td>' . $row[3] . '</td></tr><td><input name="join_team_complete" type="submit" 
+					. $row[2] . '</td><td>' . $row[3] . '</td><td><input name="join_team_complete" type="submit" 
 					class="btn btn-danger" value="Join" onclick="setUid(' . 
 					$row[0] .')" />';
 
