@@ -78,6 +78,7 @@ function joint_team($mysqli)
 	echo $index;
 	global $user_id;
 	echo $user_id;
+	die;
     $stmt = $mysqli->stmt_init();
     if($stmt = $mysqli->prepare("INSERT INTO users (user_team) VALUES (?) WHERE id = $user_id"))
     {	
