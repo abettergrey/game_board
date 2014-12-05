@@ -70,7 +70,7 @@ if($mysqli)
 
 }
 
-funciton joint_team($mysqli)
+function joint_team($mysqli)
 {	
 	$index = $_POST['uid'];
 	global $user_id
