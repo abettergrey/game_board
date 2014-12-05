@@ -86,9 +86,9 @@ function display_join_team()
 	// if records > 0 in mysql table, then populate html table, 
 	// else display "no records" message
 	if( $countvalue > 0 )
-	{
+	{	echo 'herp';
 			if($result = $mysqli->query("SELECT * FROM team"))
-			{	echo 'herp';
+			{	
 				while($row = $result->fetch_row())
 				{
 					$output = '<tr><td>' . $row[0] . '</td><td>' . $row[1] . '</td><td>'
