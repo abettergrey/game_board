@@ -85,7 +85,7 @@ function joint_team($mysqli)
         $stmt->execute();
         $stmt->close();
     }
-    else{echo "yep";}
+    else{echo "yep";die;}
 }
 
 function display_join_team($mysqli)
