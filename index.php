@@ -131,6 +131,7 @@ function display_join_team($mysqli)
 	{
 			echo '<br><p>No records in database table</p><br>';
 	}
+	footer();
 }
 
 function create_team($mysqli)
