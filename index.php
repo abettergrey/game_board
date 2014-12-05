@@ -87,7 +87,7 @@ function display_join_team()
 	// else display "no records" message
 	if( $countvalue > 0 )
 	{
-			if($result = $mysqli->query("SELECT * FROM events"))
+			if($result = $mysqli->query("SELECT * FROM team"))
 			{
 				while($row = $result->fetch_row())
 				{
