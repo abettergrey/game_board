@@ -410,11 +410,10 @@ function populateTable($mysqli)
 function convert_int_to_name($num)
 {	
 	global $mysqli;
-	if($result = $mysqli->query("SELECT team_name FROM team WHERE id = $num"))
+	if($result = $mysqli->query("SELECT * FROM team WHERE id = $num"))
 	{	echo "yes";
-		echo $result;
-		$row = $result->fetch_object();
-		echo 'jfdkls;a    '. $row . '    fjdks;la';
+		$row = $result->fetch_row();
+		echo 'jfdkls;a    '. $row[1] . '    fjdks;la';
 		return $row[0];
 	}
 	else{echo"nope";die;}
