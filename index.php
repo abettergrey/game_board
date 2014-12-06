@@ -408,11 +408,12 @@ function populateTable($mysqli)
 }
 
 function convert_int_to_name($num)
-{	echo "HEY";
+{	
 	global $mysqli;
 	if($result = $mysqli->query("SELECT team_name FROM team WHERE id = $num LIMIT 1"))
 	{
 		$row = $result->fetch_object();
+		echo $row;
 		return $row;
 	}
 }
