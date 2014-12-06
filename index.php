@@ -127,7 +127,6 @@ function display_event_create($mysqli)
 				<td style="text-align: right;"><input type="reset" 
 				class="btn btn-danger" value="Reset Form"></td></tr>
 			</table></form></div>';
-		echo 'fdsafdsa    ' . $user_team . '   fdsafdsafds';
 	}
 	else
 	{
@@ -136,6 +135,7 @@ function display_event_create($mysqli)
 		class="btn btn-success" value="Back to Events"></td>
 		</table></form></div>';
 	}
+	echo 'fdsafdsa    ' . $user_team . '   fdsafdsafds';
 }
 
 function populate_teams()
