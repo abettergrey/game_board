@@ -38,6 +38,7 @@ if($mysqli)
 	$join_team_complete = 5;
 	$make_event			= 6;
 	$make_event_complete= 7;
+	$deleteSelected 	= 8;
 
 	$userSelection = $firstCall; // assumes first call unless button was clicked
 	
@@ -47,6 +48,7 @@ if($mysqli)
 	if( isset( $_POST['join_team_complete'])) $userSelection = $join_team_complete;
 	if( isset( $_POST['make_event'])) $userSelection = $make_event;
 	if( isset( $_POST['add_event_complete'])) $userSelection = $make_event_complete;
+	if( isset( $_POST['deleteSelected'])) $userSelection = $deleteSelected;
 	
 	$team_name = $_POST['team_name'];
 	$enemy_team_id = $_POST['event_e_team'];
@@ -84,8 +86,26 @@ if($mysqli)
 			displayHTMLHead();
 			header( 'Location: http://107.178.221.68/game_board/index.php' );
 			break;
+		case $deleteSelected:
+			displayHTMLHead()
+			delete_function($mysqli);
+			break;
 	endswitch;
 
+}
+
+fucntion delete_function($mysqli)
+{
+	index = $_POST['hid'];  // "hid" is id of db record to be deleted
+    $stmt = $mysqli->stmt_init();
+    if($stmt = $mysqli->prepare("DELETE FROM events WHERE id=?"))
+    {
+        // Bind parameters. Types: s=string, i=integer, d=double, etc.
+		// protects against sql injections
+        $stmt->bind_param('i', $index);
+        $stmt->execute();
+        $stmt->close();
+    }
 }
 
 function create_event($mysqli)
