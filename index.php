@@ -118,14 +118,13 @@ function updateScores($mysqli)
 	{
 		global $team_one_score,	$team_two_score, $winner;
 		$index = $_POST['uid'];  // "uid" is id of db record to be updated 
-    
 		$stmt = $mysqli->stmt_init();
 		if($stmt = $mysqli->prepare("UPDATE events SET team_one_score = ?, team_two_score = ?, 
 			winning_team=? WHERE id = ?"))
 		{	
 			// Bind parameters. Types: s=string, i=integer, d=double, etc.
 			// protects against sql injections
-			$stmt->bind_param('iii', $team_one_score, $team_two_score, $winner, $index);
+			$stmt->bind_param('iiii', $team_one_score, $team_two_score, $winner, $index);
 			$stmt->execute();
 			$stmt->close();
 			
