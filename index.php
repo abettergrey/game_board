@@ -91,6 +91,7 @@ if($mysqli)
 function create_event($mysqli)
 {
 	global $user_team, $enemy_team_id, $game, $game_type;
+	echo $user_team, $enemy_team_id;
     $stmt = $mysqli->stmt_init();
     if($stmt = $mysqli->prepare("INSERT INTO events (team_one_id, team_two_id, game_name, game_type ) VALUES (?,?,?,?)"))
     {	
