@@ -122,7 +122,9 @@ function updateScores($mysqli)
 		$stmt = $mysqli->stmt_init();
 		if($stmt = $mysqli->prepare("UPDATE events SET team_one_score = ?, team_two_score = ?, 
 			winning_team=? WHERE id = ?"))
-		{
+		{	
+			echo "fjkdls;a";
+			die;
 			// Bind parameters. Types: s=string, i=integer, d=double, etc.
 			// protects against sql injections
 			$stmt->bind_param('iii', $team_one_score, $team_two_score, $winner, $index);
