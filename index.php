@@ -89,6 +89,7 @@ if($mysqli)
 		case $deleteSelected:
 			displayHTMLHead();
 			delete_function($mysqli);
+			header( 'Location: http://107.178.221.68/game_board/index.php' );
 			break;
 	endswitch;
 
