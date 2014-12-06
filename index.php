@@ -17,6 +17,7 @@ $password="hpfreak01";
 $dbname="game_board";
 $user_email = $_SESSION['user_email'];
 $user_id = $_SESSION['id'];
+$user_team = $_SESSION['user_team'];
 $mysqli = new mysqli($hostname, $username, $password, $dbname);
 
 if(!$user_id)
@@ -35,6 +36,7 @@ if($mysqli)
 	$insertTeam_done	= 3;
 	$join_team			= 4;
 	$join_team_complete = 5;
+	$make_event			= 6;
 
 	$userSelection = $firstCall; // assumes first call unless button was clicked
 	
@@ -42,6 +44,7 @@ if($mysqli)
 	if( isset( $_POST['insertTeam_done'] ) ) $userSelection = $insertTeam_done;
 	if( isset( $_POST['join_team'])) $userSelection = $join_team;
 	if( isset( $_POST['join_team_complete'])) $userSelection = $join_team_complete;
+	if( isset( $_POST['make_event'])) $userSelection = $make_event;
 	
 	$team_name = $_POST['team_name'];
 	switch($userSelection):
@@ -68,8 +71,60 @@ if($mysqli)
 			displayHTMLHead();
 			header( 'Location: http://107.178.221.68/game_board/index.php' );
 			break;
+		case $make_event:
+			displayHTMLHead();
+			display_event_create($mysqli);
+			break;
 	endswitch;
 
+}
+
+function display_event_create($mysqli)
+{
+	global $user_team;
+	echo '<div class="col-md-4">
+	<form name="basic" method="POST" action="index.php" 
+	    onSubmit="return validate();">
+		<table class="table table-condensed" style="border: 1px solid #dddddd; 
+		    border-radius: 5px; box-shadow: 2px 2px 10px;">
+			<tr><td colspan="2" style="text-align: center; border-radius: 5px; 
+			    color: white; background-color:#333333;">
+			<h2>Event Maker</h2></td></tr>';
+	if($user_team)
+	{	
+		echo 	'<tr><td>Enemy Team: </td><td><select name="event_e_team">';
+		echo populateLocations();
+		echo 	'</select></td></tr>
+				<tr><td>Game Being Played: <td><td><input type="edit" name="event_game" value="" 
+				size="20"></td></tr>
+				<tr><td>Game Type: <td><td><input type="edit" name="event_game_type" value="" 
+				size="20"></td></tr>
+				<tr><td><input type="submit" name="insertTeam_done" 
+				class="btn btn-success" value="Add Team"></td>
+				<td style="text-align: right;"><input type="reset" 
+				class="btn btn-danger" value="Reset Form"></td></tr>
+			</table></form></div>';
+	}
+	else
+	{
+		echo '<tr><td>You must join a team first<td></tr>
+		<tr><td><input type="submit" name="" 
+		class="btn btn-success" value="Back to Events"></td>
+		</table></form></div>';
+	}
+}
+
+fucntion populate_teams()
+{
+	global $mysqli;
+	$result = $mysqli->query("select * from team");
+	while($row = $result->fetch_row())
+	{
+		$output = '<option value ="' . $row[0] . '"> ' . $row[1] . '</option>';
+			
+		echo $output;
+	}
+	$result->close();
 }
 
 function joint_team($mysqli)
@@ -163,8 +218,7 @@ function display_team_insert()
 			class="btn btn-success" value="Add Team"></td>
 			<td style="text-align: right;"><input type="reset" 
 			class="btn btn-danger" value="Reset Form"></td></tr>
-		</table><a href="table22.php" class="btn btn-primary">
-		Display Database</a></form></div>';
+		</table></form></div>';
 }
 
 function checkConnect($mysqli)
@@ -306,6 +360,8 @@ function showList($mysqli, $msg)
 			class="btn btn-primary"">
 			<input type="submit" name="join_team" value="Join a Team" 
 			class="btn btn-primary"">
+			<input type="submit" name="make_event" value="Make a Event" 
+			class="btn btn-danger"">
 			</form></div>';
 	footer();
 }

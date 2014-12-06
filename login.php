@@ -46,6 +46,7 @@ function try_login()
 			{
 				$_SESSION['user_email'] = $row[1];
 				$_SESSION['id'] = $row[0];
+				$_SESSION['user_team'] = $row[3];
 				header( 'Location: http://107.178.221.68/game_board/index.php' );
 				$found = true;
 			}
