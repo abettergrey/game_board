@@ -390,7 +390,8 @@ function showList($mysqli, $msg)
 }
 
 function populateTable($mysqli)
-{
+{	
+	global $user_team;
 	if($result = $mysqli->query("SELECT * FROM events"))
 	{
 		while($row = $result->fetch_row())
@@ -412,7 +413,7 @@ function populateTable($mysqli)
 			}
 			else
 			{
-				$output .= '<td>' . $user_team . $is_my_team1 . $is_my_team2 .'</td>';
+				$output .= '<td></td>';
 			}
 			echo $output;
 		}
