@@ -41,6 +41,7 @@ if($mysqli)
 	$deleteSelected 	= 8;
 	$updateSelected 	= 9;
 	$updateCompleted 	= 10;
+	$gitSelected		= 11;
 
 	$userSelection = $firstCall; // assumes first call unless button was clicked
 	
@@ -53,6 +54,7 @@ if($mysqli)
 	if( isset( $_POST['deleteSelected'])) $userSelection = $deleteSelected;
 	if( isset( $_POST['updateSelected'])) $userSelection = $updateSelected;
 	if( isset( $_POST['updateCompleted'])) $userSelection = $updateCompleted;
+	if(	isset( $_POST['git_source'])) $userSelection = $gitSelected;
 	
 	$team_name = $_POST['team_name'];
 	$enemy_team_id = $_POST['event_e_team'];
@@ -107,6 +109,9 @@ if($mysqli)
 			displayHTMLHead();
 			updateScores($mysqli);
 			header( 'Location: http://107.178.221.68/game_board/index.php' );
+			break;
+		case $gitSelected:
+			header( 'Location: https://github.com/abettergrey/game_board' );
 			break;
 	endswitch;
 
@@ -495,6 +500,8 @@ function showList($mysqli, $msg)
 			class="btn btn-primary"">
 			<input type="submit" name="make_event" value="Make a Event" 
 			class="btn btn-danger"">
+			<input type="submit" name="git_source" value="Git-Hub Source" 
+			class="btn btn-warning"">
 			</form></div>';
 	footer();
 }
@@ -539,7 +546,6 @@ function convert_int_to_name($num)
 		$row = $result->fetch_row();
 		return $row[1];
 	}
-	else{echo"nope";die;}
 }
 
 function footer()
