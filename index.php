@@ -412,7 +412,7 @@ function populateTable($mysqli)
 			}
 			else
 			{
-				$output .= '<td>' . $user_team . $is_my_team1 .' fdsa</td>';
+				$output .= '<td>' . $user_team . $is_my_team1 . $is_my_team2 .'</td>';
 			}
 			echo $output;
 		}
