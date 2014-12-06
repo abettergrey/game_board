@@ -399,7 +399,8 @@ function populateTable($mysqli)
 				. $row[3] . '</td><td>' . convert_int_to_name($row[2]) . '</td><td>' . $row[4]
 				. '</td><td>' . $row[5] . '</td><td>' . $row[6]  
 				. '</td><td>' . $row[6] . '</td>';
-			if($user_team == $row[1] || $user_team == $row[2])
+
+			if($user_team === $row[1] || $user_team === $row[2])
 			{
 				$output .= '<td><input name="deleteSelected" type="submit" 
 					class="btn btn-danger" value="Delete" onclick="setHid(' . 
@@ -409,8 +410,7 @@ function populateTable($mysqli)
 			}
 			else
 			{
-				$output .= '<td>fjdkls;a</td>';
-			}
+				$output .= '<td>' . $user_team . $row[1] .'</td>';
 
 			echo $output;
 		}
