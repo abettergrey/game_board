@@ -413,8 +413,7 @@ function convert_int_to_name($num)
 	if($result = $mysqli->query("SELECT team_name FROM team WHERE id = $num"))
 	{	echo "yes";
 		$row = $result->fetch_object();
-
-		return $row;
+		return $row[0];
 	}
 	else{echo"nope";die;}
 }
