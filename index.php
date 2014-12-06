@@ -135,7 +135,6 @@ function display_event_create($mysqli)
 		class="btn btn-success" value="Back to Events"></td>
 		</table></form></div>';
 	}
-	echo 'fdsafdsa    ' . $user_team . '   fdsafdsafds';
 }
 
 function populate_teams()
@@ -386,6 +385,7 @@ function showList($mysqli, $msg)
 			<input type="submit" name="make_event" value="Make a Event" 
 			class="btn btn-danger"">
 			</form></div>';
+	echo 'fdsafdsa    ' . $user_team . '   fdsafdsafds';
 	footer();
 }
 
