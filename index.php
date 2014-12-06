@@ -409,7 +409,7 @@ function populateTable($mysqli)
 			}
 			else
 			{
-				$output .= '<td></td>';
+				$output .= '<td>fjdkls;a</td>';
 			}
 
 			echo $output;
