@@ -182,6 +182,7 @@ function displayUpdate($mysqli)
 				</div>';
 		}
 		$result->close();
+	}
 }
 
 function delete_function($mysqli)
