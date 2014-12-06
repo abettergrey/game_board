@@ -96,7 +96,7 @@ if($mysqli)
 
 function delete_function($mysqli)
 {
-	index = $_POST['hid'];  // "hid" is id of db record to be deleted
+	$index = $_POST['hid'];  // "hid" is id of db record to be deleted
     $stmt = $mysqli->stmt_init();
     if($stmt = $mysqli->prepare("DELETE FROM events WHERE id=?"))
     {
