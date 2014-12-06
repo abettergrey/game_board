@@ -39,6 +39,8 @@ if($mysqli)
 	$make_event			= 6;
 	$make_event_complete= 7;
 	$deleteSelected 	= 8;
+	$updateSelected 	= 9;
+	$updateCompleted 	= 10;
 
 	$userSelection = $firstCall; // assumes first call unless button was clicked
 	
@@ -49,11 +51,17 @@ if($mysqli)
 	if( isset( $_POST['make_event'])) $userSelection = $make_event;
 	if( isset( $_POST['add_event_complete'])) $userSelection = $make_event_complete;
 	if( isset( $_POST['deleteSelected'])) $userSelection = $deleteSelected;
+	if( isset( $_POST['updateSelected'])) $userSelection = $updateSelected;
+	if( isset( $_POST['updateCompleted'])) $userSelection = $updateCompleted;
 	
 	$team_name = $_POST['team_name'];
 	$enemy_team_id = $_POST['event_e_team'];
 	$game = $_POST['event_game'];
 	$game_type = $_POST['event_game_type'];
+
+	$team_one_score = $_POST['team_one_score'];
+	$team_two_score = $_POST['team_two_score'];
+	$winner = $_POST['winning_team_u'];
 	switch($userSelection):
 		case $firstCall:
 			displayHTMLHead();
@@ -91,8 +99,89 @@ if($mysqli)
 			delete_function($mysqli);
 			header( 'Location: http://107.178.221.68/game_board/index.php' );
 			break;
+		case $updateSelected:
+			displayHTMLHead();
+			displayUpdate($mysqli);
+			break;
+		case $updateCompleted:
+			displayHTMLHead();
+			updateScores($mysqli);
+			header( 'Location: http://107.178.221.68/game_board/index.php' );
+			break;
 	endswitch;
 
+}
+
+function updateScores($mysqli)
+{
+	if($_POST)
+	{
+		global $team_one_score,	$team_two_score, $winner;
+		$index = $_POST['uid'];  // "uid" is id of db record to be updated 
+    
+		$stmt = $mysqli->stmt_init();
+		if($stmt = $mysqli->prepare("UPDATE events SET team_one_score = ?, team_two_score = ?, 
+			winning_team=? WHERE id = ?"))
+		{
+			// Bind parameters. Types: s=string, i=integer, d=double, etc.
+			// protects against sql injections
+			$stmt->bind_param('iii', $team_one_score, $team_two_score, $winner, $index);
+			$stmt->execute();
+			$stmt->close();
+			
+		}
+	}
+}
+
+function displayUpdate($mysqli)
+{
+	$index = $_POST['uid'];  // "uid" is id of db record to be updated 
+	
+	if($result = $mysqli->query("SELECT * FROM events WHERE id = $index"))
+	{
+		while($row = $result->fetch_row())
+		{
+			echo '	<br>
+					<div class="col-md-4">
+					<form name="basic" method="POST" action="index.php">
+						<table class="table table-condensed" 
+						    style="border: 1px solid #dddddd; 
+							border-radius: 5px; box-shadow: 2px 2px 10px;">
+							<tr><td colspan="2" style="text-align: center; 
+							border-radius: 5px; color: white; 
+							background-color:#333333;">
+							<h2>Event Update</h2></td></tr>
+							<tr><td>Team One: </td><td><input type="edit" 
+							name="team_one_u" value="'. $row[1] .'" size="20" readonly>
+							</td></tr>
+							<tr><td>Team Two: </td><td><input type="edit" 
+							name="team_two_u" value="' . $row[2] . '" size="20" readonly>
+							</td></tr>
+							<tr><td>Team One Score: </td><td><input type="number" 
+							name="team_one_score_u" value="' . $row[3] . '">
+							</td></tr>
+							<tr><td>Team Two Score: </td><td><input type="number" 
+							name="team_two_score_u" value="' . $row[4] . '">
+							</td></tr>
+							<tr><td>Game Name: </td><td><input type="edit" 
+							name="game_name_u" value="' . $row[5] . '" size="30" readonly>
+							</td></tr>
+							<tr><td>Game Type: </td><td><input type="edit" 
+							name="game_type_u" value="' . $row[6] . '" size="20" readonly>
+							</td></tr>
+							<tr><td>Winning Team: </td><td><input type="number" 
+							name="winning_team_u" value="' . $row[7] . '">
+							</td></tr>
+							<tr><td><input type="submit" name="updateCompleted" 
+							class="btn btn-primary" value="Update Entry"></td>
+							<td style="text-align: right;"><input type="reset" 
+							class="btn btn-danger" value="Reset Form"></td></tr>
+						</table>
+						<input type="hidden" name="uid" value="' . $row[0] . '">
+					</form>
+				</div>';
+		}
+		$result->close();
 }
 
 function delete_function($mysqli)
