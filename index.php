@@ -394,13 +394,15 @@ function populateTable($mysqli)
 	if($result = $mysqli->query("SELECT * FROM events"))
 	{
 		while($row = $result->fetch_row())
-		{
+		{	
+			$is_my_team1 = $row[1];
+			$is_my_team2 = $row[2];
 			$output = '<tr><td>' . $row[0] . '</td><td>' . convert_int_to_name($row[1]) . '</td><td>'
 				. $row[3] . '</td><td>' . convert_int_to_name($row[2]) . '</td><td>' . $row[4]
 				. '</td><td>' . $row[5] . '</td><td>' . $row[6]  
 				. '</td><td>' . $row[6] . '</td>';
 
-			if($user_team === $row[1] || $user_team === $row[2])
+			if($user_team === $is_my_team1 || $user_team === $is_my_team1)
 			{
 				$output .= '<td><input name="deleteSelected" type="submit" 
 					class="btn btn-danger" value="Delete" onclick="setHid(' . 
