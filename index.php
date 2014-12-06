@@ -398,8 +398,18 @@ function populateTable($mysqli)
 				. $row[3] . '</td><td>' . convert_int_to_name($row[2]) . '</td><td>' . $row[4]
 				. '</td><td>' . $row[5] . '</td><td>' . $row[6]  
 				. '</td><td>' . $row[6] . '</td>';
-				//. '<td><input style="margin-left: 10px;" type="submit"
-				//name="update" value="Update" onClick="setUid(' . $row[0] . ');" />';
+			if($user_team == $row[1] || $user_team == $row[2])
+			{
+				$output .= '<td><input name="deleteSelected" type="submit" 
+					class="btn btn-danger" value="Delete" onclick="setHid(' . 
+					$row[0] .')" /> <input style="margin-left: 10px;" type="submit" 
+					name="updateSelected" class="btn btn-primary" value="Update" 
+					onclick="setUid(' . $row[0] . ');" />';
+			}
+			else
+			{
+				$output .= '<td></td>';
+			}
 
 			echo $output;
 		}
