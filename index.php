@@ -163,7 +163,6 @@ function joint_team($mysqli)
         $stmt->execute();
         $stmt->close();
     }
-    $_SESSION['user_team'] = $index;
 }
 
 function display_join_team($mysqli)
@@ -386,7 +385,6 @@ function showList($mysqli, $msg)
 			<input type="submit" name="make_event" value="Make a Event" 
 			class="btn btn-danger"">
 			</form></div>';
-	echo 'fdsafdsa    ' . $user_team . '   fdsafdsafds';
 	footer();
 }
 
