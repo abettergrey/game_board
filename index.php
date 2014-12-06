@@ -357,7 +357,7 @@ function showList($mysqli, $msg)
 			</td></tr><tr style="font-weight:800; font-size:20px;">
 			<td>id</td><td>Team 1 Name</td><td>Team 1 Score</td>
 			<td>Team 2 Name</td><td>Team 2 Score</td><td>Game Name</td>
-			<td>Game Type</td><td>Winner</td><td>Closed</td><td></td></tr>';
+			<td>Game Type</td><td>Winner</td><td></td><td></td></tr>';
 
 	// get count of records in mysql table
 	$countresult = $mysqli->query("SELECT COUNT(*) FROM events");
