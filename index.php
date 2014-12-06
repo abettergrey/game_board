@@ -163,6 +163,7 @@ function joint_team($mysqli)
         $stmt->execute();
         $stmt->close();
     }
+    $_SESSION['user_team'] = $index;
 }
 
 function display_join_team($mysqli)
