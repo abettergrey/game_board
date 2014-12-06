@@ -114,7 +114,7 @@ function display_event_create($mysqli)
 	}
 }
 
-fucntion populate_teams()
+function populate_teams()
 {
 	global $mysqli;
 	$result = $mysqli->query("select * from team");
