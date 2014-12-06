@@ -411,7 +411,7 @@ function populateTable($mysqli)
 			else
 			{
 				$output .= '<td>' . $user_team . $row[1] .'</td>';
-
+			}
 			echo $output;
 		}
 	}
