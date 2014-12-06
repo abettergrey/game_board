@@ -346,7 +346,7 @@ function showList($mysqli, $msg)
 {
     // display html table column headings
 	echo 	'<div class="col-md-12">
-			<form action="index.php" method="POST">
+			<form action="game_board/index.php" method="POST">
 			<table class="table table-condensed" 
 			style="border: 1px solid #dddddd; border-radius: 5px; 
 			box-shadow: 2px 2px 10px;">
