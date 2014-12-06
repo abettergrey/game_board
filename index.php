@@ -394,8 +394,8 @@ function populateTable($mysqli)
 	{
 		while($row = $result->fetch_row())
 		{
-			$output = '<tr><td>' . $row[0] . '</td><td>' . $row[1] . '</td><td>'
-				. $row[3] . '</td><td>' . $row[2] . '</td><td>' . $row[4]
+			$output = '<tr><td>' . $row[0] . '</td><td>' . convert_int_to_name($row[1]) . '</td><td>'
+				. $row[3] . '</td><td>' . convert_int_to_name($row[2]) . '</td><td>' . $row[4]
 				. '</td><td>' . $row[5] . '</td><td>' . $row[6]  
 				. '</td><td>' . $row[6] . '</td>';
 				//. '<td><input style="margin-left: 10px;" type="submit"
@@ -405,6 +405,16 @@ function populateTable($mysqli)
 		}
 	}
 	$result->close();
+}
+
+function convert_int_to_name($num)
+{
+	global $mysqli;
+	if($result = $mysqli->query("SELECT team_name FROM team WHERE id = $num LIMIT 1"))
+	{
+		$row = $result->fetch_object();
+		return $row;
+	}
 }
 
 function footer()
