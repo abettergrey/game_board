@@ -127,7 +127,7 @@ function display_event_create($mysqli)
 				<td style="text-align: right;"><input type="reset" 
 				class="btn btn-danger" value="Reset Form"></td></tr>
 			</table></form></div>';
-		echo $user_team;
+		echo 'fdsafdsa    ' . $user_team . '   fdsafdsafds';
 	}
 	else
 	{
