@@ -37,6 +37,7 @@ if($mysqli)
 	$join_team			= 4;
 	$join_team_complete = 5;
 	$make_event			= 6;
+	$make_event_complete= 7;
 
 	$userSelection = $firstCall; // assumes first call unless button was clicked
 	
@@ -45,8 +46,12 @@ if($mysqli)
 	if( isset( $_POST['join_team'])) $userSelection = $join_team;
 	if( isset( $_POST['join_team_complete'])) $userSelection = $join_team_complete;
 	if( isset( $_POST['make_event'])) $userSelection = $make_event;
+	if( isset( $_POST['add_event_complete'])) $userSelection = $make_event_complete;
 	
 	$team_name = $_POST['team_name'];
+	$enemy_team_id = $_POST['event_e_team'];
+	$game = $_POST['event_game'];
+	$game_type = $_POST['event_game_type'];
 	switch($userSelection):
 		case $firstCall:
 			displayHTMLHead();
@@ -57,7 +62,6 @@ if($mysqli)
 			display_team_insert();
 			break;
 		case $insertTeam_done:
-			//displayHTMLHead();
 			create_team($mysqli);
 			displayHTMLHead();
 			header( 'Location: http://107.178.221.68/game_board/index.php' );
@@ -75,8 +79,27 @@ if($mysqli)
 			displayHTMLHead();
 			display_event_create($mysqli);
 			break;
+		case $make_event_complete:
+			create_event($mysqli);
+			displayHTMLHead();
+			header( 'Location: http://107.178.221.68/game_board/index.php' );
+			break;
 	endswitch;
 
+}
+
+function create_event($mysqli)
+{
+	global $user_team, $enemy_team_id, $game, $game_type;
+    $stmt = $mysqli->stmt_init();
+    if($stmt = $mysqli->prepare("INSERT INTO events (team_one_id, team_two_id, game_name, game_type ) VALUES (?,?,?,?)"))
+    {	
+        // Bind parameters. Types: s=string, i=integer, d=double, etc.
+		// protects against sql injections
+        $stmt->bind_param('iiss', $user_team, $enemy_team_id, $game, $game_type);
+        $stmt->execute();
+        $stmt->close();
+    }
 }
 
 function display_event_create($mysqli)
@@ -99,8 +122,8 @@ function display_event_create($mysqli)
 				size="20"></td></tr>
 				<tr><td>Game Type: </td><td><input type="edit" name="event_game_type" value="" 
 				size="20"></td></tr>
-				<tr><td><input type="submit" name="insertTeam_done" 
-				class="btn btn-success" value="Add Team"></td>
+				<tr><td><input type="submit" name="add_event_complete" 
+				class="btn btn-success" value="Add Event"></td>
 				<td style="text-align: right;"><input type="reset" 
 				class="btn btn-danger" value="Reset Form"></td></tr>
 			</table></form></div>';
@@ -140,7 +163,6 @@ function joint_team($mysqli)
         $stmt->execute();
         $stmt->close();
     }
-    else{echo "yep";die;}
 }
 
 function display_join_team($mysqli)
