@@ -350,7 +350,7 @@ function showList($mysqli, $msg)
 			<table class="table table-condensed" 
 			style="border: 1px solid #dddddd; border-radius: 5px; 
 			box-shadow: 2px 2px 10px;">
-			<tr><td colspan="10" style="text-align: center; border-radius: 5px; 
+			<tr><td colspan="11" style="text-align: center; border-radius: 5px; 
 			color: white; background-color:#333333;">
 			<h2 style="color: white;">Game Board Events</h2>
 			</td></tr><tr style="font-weight:800; font-size:20px;">
