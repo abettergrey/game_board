@@ -93,7 +93,7 @@ function display_event_create($mysqli)
 	if($user_team)
 	{	
 		echo 	'<tr><td>Enemy Team: </td><td><select name="event_e_team">';
-		echo populateLocations();
+		echo populate_teams();
 		echo 	'</select></td></tr>
 				<tr><td>Game Being Played: <td><td><input type="edit" name="event_game" value="" 
 				size="20"></td></tr>
@@ -115,7 +115,7 @@ function display_event_create($mysqli)
 }
 
 function populate_teams()
-{
+{	
 	global $mysqli;
 	$result = $mysqli->query("select * from team");
 	while($row = $result->fetch_row())
