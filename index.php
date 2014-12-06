@@ -95,9 +95,9 @@ function display_event_create($mysqli)
 		echo 	'<tr><td>Enemy Team: </td><td><select name="event_e_team">';
 		echo populate_teams();
 		echo 	'</select></td></tr>
-				<tr><td>Game Being Played: <td><td><input type="edit" name="event_game" value="" 
+				<tr><td>Game Being Played: </td><td><input type="edit" name="event_game" value="" 
 				size="20"></td></tr>
-				<tr><td>Game Type: <td><td><input type="edit" name="event_game_type" value="" 
+				<tr><td>Game Type: </td><td><input type="edit" name="event_game_type" value="" 
 				size="20"></td></tr>
 				<tr><td><input type="submit" name="insertTeam_done" 
 				class="btn btn-success" value="Add Team"></td>
