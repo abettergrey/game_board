@@ -59,8 +59,8 @@ if($mysqli)
 	$game = $_POST['event_game'];
 	$game_type = $_POST['event_game_type'];
 
-	$team_one_score = $_POST['team_one_score'];
-	$team_two_score = $_POST['team_two_score'];
+	$team_one_score = $_POST['team_one_score_u'];
+	$team_two_score = $_POST['team_two_score_u'];
 	$winner = $_POST['winning_team_u'];
 	switch($userSelection):
 		case $firstCall:
@@ -123,8 +123,6 @@ function updateScores($mysqli)
 		if($stmt = $mysqli->prepare("UPDATE events SET team_one_score = ?, team_two_score = ?, 
 			winning_team=? WHERE id = ?"))
 		{	
-			echo $team_one_score, $team_two_score, $winner, $index;
-			die;
 			// Bind parameters. Types: s=string, i=integer, d=double, etc.
 			// protects against sql injections
 			$stmt->bind_param('iii', $team_one_score, $team_two_score, $winner, $index);
