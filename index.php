@@ -511,7 +511,7 @@ function populateTable($mysqli)
 			$output = '<tr><td>' . $row[0] . '</td><td>' . convert_int_to_name($row[1]) . '</td><td>'
 				. $row[3] . '</td><td>' . convert_int_to_name($row[2]) . '</td><td>' . $row[4]
 				. '</td><td>' . $row[5] . '</td><td>' . $row[6]  
-				. '</td><td>' . $row[7] . '</td>';
+				. '</td><td>' . convert_int_to_name($row[7]) . '</td>';
 
 			if($user_team === $is_my_team1 || $user_team === $is_my_team1)
 			{
